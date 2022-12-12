@@ -2,6 +2,7 @@
 
 namespace App\ServiceTest;
 
+use Cocur\Slugify\Slugify;
 use Psr\Log\LoggerInterface;
 
 class Calculator
@@ -19,6 +20,9 @@ class Calculator
 
     public function calcul(float $prix): float
     {
+
+        $slugify = new Slugify();
+        dump($slugify->slugify("Hello World"));
 
         $this->logger->info("un caclul a lieu");
         dump($this->tva);
