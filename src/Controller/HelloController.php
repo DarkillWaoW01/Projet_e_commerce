@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\ServiceTest\Calculator;
+use App\ServiceTest\Detector;
 use Cocur\Slugify\Slugify;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,9 +20,11 @@ class HelloController
 
     // on aurait aussi pu mettre "/hello/{nom<[a-zA-Z]+>}", name="hello", defaults={"nom":"World"} )
 
-    public function hello(Request $request, $nom, LoggerInterface $logger, Calculator $calculator, Slugify $slugify, Environment $twig): Response
+    public function hello(Request $request, $nom, LoggerInterface $logger, Calculator $calculator, Slugify $slugify, Environment $twig, Detector $detector): Response
     {
 
+        dump($detector->detect(101));
+        dump($detector->detect(10));
         dump($twig);
 
         $logger->error("coucou");
